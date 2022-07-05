@@ -25,7 +25,7 @@ export default function App() {
        horizontal
        keyExtractor={(category)=>category.name}
        showsHorizontalScrollIndicator={false}/>
-      <Restaurants/>
+      <Restaurants term={term}/>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
