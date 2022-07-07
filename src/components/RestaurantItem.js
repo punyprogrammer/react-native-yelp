@@ -1,11 +1,15 @@
-import { View, Text ,StyleSheet,Image} from 'react-native'
+import { View, Text ,StyleSheet,Image,TouchableOpacity} from 'react-native'
+import  {withNavigation} from "react-navigation"
 import { elevation } from './common/styles'
 
 import React from 'react'
 
-export default function RestaurantItem({restaurant}) {
-  console.log(restaurant)
+ function RestaurantItem({restaurant,navigation}) {
+
   return (
+   <TouchableOpacity
+   onPress={()=>navigation.navigate("Restaurant",{id:restaurant.id})}>
+
     <View style={styles.container}>
        <Image style={styles.image} source={{uri:restaurant.image_url}}/>
        <View style={styles.infoContainer} >
@@ -16,6 +20,7 @@ export default function RestaurantItem({restaurant}) {
           </View>
        </View>
     </View>
+   </TouchableOpacity>
   )
 }
 const styles=StyleSheet.create({
@@ -57,3 +62,4 @@ const styles=StyleSheet.create({
      }
 
 })
+export default withNavigation(RestaurantItem);
