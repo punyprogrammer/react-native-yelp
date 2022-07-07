@@ -10,7 +10,7 @@ export default  function Restaurants({term}) {
    useEffect(()=>{
 
            searchRestaurant(term)
-           console.log(data)
+       
    },[term])
 
 //    return the loading state

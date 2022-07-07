@@ -1,41 +1,37 @@
 import  {useState} from 'react';
 import yelp from '../api/yelp';
 export default ()=>{
-    const [results,setResults]=useState({
+    const [result,setResult]=useState({
 
         data:null,
         loading:false,
         error:null,
     })
 
-    const searchRestaurants=async (term)=>{
-        setResults({
+    const searchRestaurant=async (id)=>{
+        setResult({
             data:null,
             loading:true,
             error:null,
         })
         try {
             
-            const response=await yelp.get('/search',{
-               params:{
-                   limit:15,
-                   term,
-                   location:"Toronto",
-               }
-            })
-            setResults({
-                data:response.data.businesses,
+            const response=await yelp.get(`/${id}`)
+            console.log(response.data)
+            setResult({
+                data:response.data,
                 loading:false,
                 error:null,
             })
-          
+            
         } catch (error) {
-            setResults({
+              console.log(error)
+            setResult({
                 data:null,
                 loading:false,
                 error:"Something went wrong",
             })
         }
        }
-       return [results,searchRestaurants]
+       return [result,searchRestaurant]
 }

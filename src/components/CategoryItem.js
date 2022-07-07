@@ -3,7 +3,7 @@ import React from 'react'
 import { elevation } from './common/styles'
 
 const CategoryItem = ({name,src,index,active,handlerChange}) => {
-    console.log(active)
+    
   return (
     <TouchableOpacity style={[styles.container,index===0?{marginLeft:25}:{marginLeft:15},active?{backgroundColor:"rgb(241,186,87)"}:{backgroundColor:'white'}]} onPress={handlerChange}>
 
